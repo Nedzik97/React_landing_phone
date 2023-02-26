@@ -5,19 +5,21 @@ import { countDays } from "./utils/util";
 import { regExpName } from "./utils/util";
 import { regExpEmail } from "./utils/util";
 import { regExpPassword } from "./utils/util";
+import { addCheckMarkOnInput } from "./utils/util";
+import { changeClassNames } from "./utils/util";
 
 export const CreateQuastionnaire = () => {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [nameError, setNameError] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [nameError, setNameError] = useState(undefined);
+  const [emailError, setEmailError] = useState(undefined);
+  const [passwordError, setPasswordError] = useState(undefined);
   const [formValid, setFormValid] = useState(false);
   const [days, setDays] = useState("");
   const [mounth, setMounth] = useState("");
   const [years, setYears] = useState("");
-  const [selectError, setSelectError] = useState("");
+  const [selectError, setSelectError] = useState(undefined);
 
   const dataValidation = () => {
     const receivedDate = new Date(`/${mounth}/${days}/${years}`);
@@ -99,16 +101,6 @@ export const CreateQuastionnaire = () => {
     }
   };
 
-  const changeClassNames = () => {
-    if (!nameError) {
-      return "";
-    } else if (nameError) {
-      return "input_name_invalid";
-    } else {
-      return "input_name_valid";
-    }
-  };
-
   return (
     <div className="container_create_quastionnaire">
       <main className="main_create_quastionnaire">
@@ -124,11 +116,11 @@ export const CreateQuastionnaire = () => {
         >
           <label className="label_name_quastionnaire">
             Имя:
-            <div className="input_name_wrapper">
+            <div className={addCheckMarkOnInput(nameError, "name")}>
               <input
                 onInput={(e) => firstNameHandler(e)}
                 value={firstName}
-                className={`input_name_quastionnaire ${changeClassNames()}`}
+                className={changeClassNames(nameError, "name")}
                 type="text"
                 name="name"
                 placeholder="Введите имя"
@@ -143,9 +135,7 @@ export const CreateQuastionnaire = () => {
             <div className="input_wrapper" onChange={dataValidation}>
               <select
                 onChange={(e) => handlerDays(e)}
-                className={`select_quastionnaire ${
-                  selectError ? "select_invalid" : "select_valid"
-                }`}
+                className={changeClassNames(selectError, "select")}
                 aria-label="Дата рождения"
                 value={days}
               >
@@ -199,34 +189,32 @@ export const CreateQuastionnaire = () => {
           </label>
           <label className="label_password_quastionnaire">
             Придумайте пароль:
-            <input
-              onInput={(e) => passwordHendler(e)}
-              value={password}
-              className={`input_password_quastionnaire ${
-                passwordError
-                  ? "input_password_invalid"
-                  : "input_password_valid"
-              }`}
-              type="password"
-              name="password"
-              placeholder="Минимум 8 символов"
-            />
-            {passwordError && (
-              <div className="text_password_error">{passwordError}</div>
-            )}
+            <div className={addCheckMarkOnInput(passwordError, "password")}>
+              <input
+                onInput={(e) => passwordHendler(e)}
+                value={password}
+                className={changeClassNames(passwordError, "password")}
+                type="password"
+                name="password"
+                placeholder="Минимум 8 символов"
+              />
+              {passwordError && (
+                <div className="text_password_error">{passwordError}</div>
+              )}
+            </div>
           </label>
           <label className="label_mail_quastionnaire">
             Email:
-            <input
-              onInput={(e) => emailHendler(e)}
-              value={email}
-              className={`input_mail_quastionnaire ${
-                emailError ? "input_mail_invalidvalid" : "input_mail_valid"
-              }`}
-              type="mail"
-              name="mail"
-              placeholder="Введите свою почту"
-            />
+            <div className={addCheckMarkOnInput(emailError, "mail")}>
+              <input
+                onInput={(e) => emailHendler(e)}
+                value={email}
+                className={changeClassNames(emailError, "mail")}
+                type="mail"
+                name="mail"
+                placeholder="Введите свою почту"
+              />
+            </div>
             {emailError && (
               <span className="text_email_error">{emailError}</span>
             )}
