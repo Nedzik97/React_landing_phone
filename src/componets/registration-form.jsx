@@ -1,28 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { yearsBth } from "./utils/util";
-import { mounthsBth } from "./utils/util";
-import { countDays } from "./utils/util";
-import { regExpName } from "./utils/util";
-import { regExpEmail } from "./utils/util";
-import { regExpPassword } from "./utils/util";
-import { addCheckMarkOnInput } from "./utils/util";
-import { changeClassNames } from "./utils/util";
+import {
+  yearsBirth,
+  daysBirth,
+  monthsBirth,
+  regExpName,
+  regExpEmail,
+  regExpPassword,
+  changeClassNames,
+} from "../util";
 
-export const CreateQuastionnaire = () => {
+export const RegistrationForm = () => {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nameError, setNameError] = useState(undefined);
   const [emailError, setEmailError] = useState(undefined);
   const [passwordError, setPasswordError] = useState(undefined);
+  const [selectError, setSelectError] = useState(undefined);
   const [formValid, setFormValid] = useState(false);
   const [days, setDays] = useState("");
-  const [mounth, setMounth] = useState("");
+  const [month, setMounth] = useState("");
   const [years, setYears] = useState("");
-  const [selectError, setSelectError] = useState(undefined);
 
   const dataValidation = () => {
-    const receivedDate = new Date(`/${mounth}/${days}/${years}`);
+    const receivedDate = new Date(`/${month}/${days}/${years}`);
     const dataNow = new Date();
     const diffDate = Math.floor(
       (dataNow - receivedDate) / (1000 * 60 * 60 * 24 * 365)
@@ -36,7 +37,7 @@ export const CreateQuastionnaire = () => {
 
   useEffect(() => {
     dataValidation();
-  }, [dataValidation, days, mounth, years]);
+  }, [dataValidation, days, month, years]);
 
   const handlerDays = (e) => {
     setDays(e.target.value);
@@ -102,47 +103,64 @@ export const CreateQuastionnaire = () => {
   };
 
   return (
-    <div className="container_create_quastionnaire">
-      <main className="main_create_quastionnaire">
-        <h1 className="title_create_quastionnaire">Создать анкету</h1>
-        <p className="text_create_quastionnaire">
+    <div className="container-create-quastionnaire">
+      <main className="main-create-quastionnaire">
+        <h1 className="title-create-quastionnaire">Создать анкету</h1>
+        <p className="text-create-quastionnaire">
           Бистрая регистрация, чтобы перейти к общению
         </p>
         <form
-          className="form_quastionnaire"
+          className="form-quastionnaire"
           action="#"
           method="post"
-          name="create_quastionnaire"
+          name="create-quastionnaire"
         >
-          <label className="label_name_quastionnaire">
+          <label className="label-name-quastionnaire">
             Имя:
-            <div className={addCheckMarkOnInput(nameError, "name")}>
+            <div
+              className={changeClassNames(
+                nameError,
+                "name-wrapper",
+                "valid",
+                "invalid"
+              )}
+            >
               <input
                 onInput={(e) => firstNameHandler(e)}
                 value={firstName}
-                className={changeClassNames(nameError, "name")}
+                className={changeClassNames(
+                  nameError,
+                  "name-quastionnaire",
+                  "valid",
+                  "invalid"
+                )}
                 type="text"
                 name="name"
                 placeholder="Введите имя"
               />
               {nameError && (
-                <span className="text_name_error">{nameError}</span>
+                <span className="text-name-error">{nameError}</span>
               )}
             </div>
           </label>
-          <label className="label_name_quastionnaire">
+          <label className="label-name-quastionnaire">
             Дата рождения:
-            <div className="input_wrapper" onChange={dataValidation}>
+            <div className="input-wrapper" onChange={dataValidation}>
               <select
                 onChange={(e) => handlerDays(e)}
-                className={changeClassNames(selectError, "select")}
+                className={changeClassNames(
+                  selectError,
+                  "select-quastionnaire",
+                  "valid",
+                  "invalid"
+                )}
                 aria-label="Дата рождения"
                 value={days}
               >
                 <option value="" disabled>
                   ДД
                 </option>
-                {countDays.map((day, index) => (
+                {daysBirth.map((day, index) => (
                   <option value={day} key={index}>
                     {day}
                   </option>
@@ -150,16 +168,19 @@ export const CreateQuastionnaire = () => {
               </select>
               <select
                 onChange={(e) => handlerMounth(e)}
-                className={`select_quastionnaire ${
-                  selectError ? "select_invalid" : "select_valid"
-                }`}
+                className={changeClassNames(
+                  selectError,
+                  "select-quastionnaire",
+                  "valid",
+                  "invalid"
+                )}
                 aria-label="Месяц рождения"
-                value={mounth}
+                value={month}
               >
                 <option value="" disabled>
                   MM
                 </option>
-                {mounthsBth.map((mounth, index) => (
+                {monthsBirth.map((mounth, index) => (
                   <option value={mounth} key={index}>
                     {mounth}
                   </option>
@@ -167,76 +188,103 @@ export const CreateQuastionnaire = () => {
               </select>
               <select
                 onChange={(e) => handlerYears(e)}
-                className={`select_quastionnaire ${
-                  selectError ? "select_invalid" : "select_valid"
-                }`}
+                className={changeClassNames(
+                  selectError,
+                  "select-quastionnaire",
+                  "valid",
+                  "invalid"
+                )}
                 aria-label="Год рождения"
                 value={years}
               >
                 <option value="" disabled>
                   ГГГГ
                 </option>
-                {yearsBth.map((year, index) => (
+                {yearsBirth.map((year, index) => (
                   <option value={year} key={index}>
                     {year}
                   </option>
                 ))}
               </select>
               {selectError && (
-                <span className="select_error">{selectError}</span>
+                <span className="select-error">{selectError}</span>
               )}
             </div>
           </label>
-          <label className="label_password_quastionnaire">
+          <label className="label-password-quastionnaire">
             Придумайте пароль:
-            <div className={addCheckMarkOnInput(passwordError, "password")}>
+            <div
+              className={changeClassNames(
+                passwordError,
+                "password-wrapper",
+                "valid",
+                "invalid"
+              )}
+            >
               <input
                 onInput={(e) => passwordHendler(e)}
                 value={password}
-                className={changeClassNames(passwordError, "password")}
+                className={changeClassNames(
+                  passwordError,
+                  "password-quastionnaire",
+                  "valid",
+                  "invalid"
+                )}
                 type="password"
                 name="password"
                 placeholder="Минимум 8 символов"
               />
               {passwordError && (
-                <div className="text_password_error">{passwordError}</div>
+                <div className="text-password-error">{passwordError}</div>
               )}
             </div>
           </label>
-          <label className="label_mail_quastionnaire">
+          <label className="label-mail-quastionnaire">
             Email:
-            <div className={addCheckMarkOnInput(emailError, "mail")}>
+            <div
+              className={changeClassNames(
+                emailError,
+                "mail-wrapper",
+                "valid",
+                "valid"
+              )}
+            >
               <input
                 onInput={(e) => emailHendler(e)}
                 value={email}
-                className={changeClassNames(emailError, "mail")}
+                className={changeClassNames(
+                  emailError,
+                  "mail-quastionnaire",
+                  "valid",
+                  "invalid"
+                )}
                 type="mail"
                 name="mail"
                 placeholder="Введите свою почту"
               />
             </div>
             {emailError && (
-              <span className="text_email_error">{emailError}</span>
+              <span className="text-email-error">{emailError}</span>
             )}
           </label>
           <button
-            className="button_create_quastionnaire"
+            className="button-create-quastionnaire"
             onChange={(e) => hendlerButton(e)}
             disabled={!formValid}
             type="submit"
           >
             Создать
           </button>
-          <label className="label_checkbox">
+          <label className="label-checkbox">
             Регистрируясь, я подтверждаю что мне исполнилось 18 лет. Я принимаю
             условия лицензионного соглашения, политики конфиденциальности,
             обработки персональных данных.
             <input
-              className="input_checkbox"
+              className="input-checkbox"
               type="checkbox"
-              name="proof_of_age"
+              name="proof-of-age"
             />
-            <span className="checkbox_mark"></span>
+            <span className="checkbox-mark"></span>
           </label>
         </form>
       </main>

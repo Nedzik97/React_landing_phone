@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
-import photoLylia from "../images/lylia_photo.png";
-import photoEgor from "../images/egor_photo.png";
+import photoLylia from "../images/lylia-photo.png";
+import photoEgor from "../images/egor-photo.png";
 
 export const GenderSelection = () => {
   return (
-    <div className="gender_selection_wrapper">
-      <p className="gender_text">Наибольшая база анкет для знакомств</p>
-      <Link className="transition_link" to="/purposeofdating">
-        <label className="button_gender button_man">
+    <div className="gender-selection-wrapper">
+      <p className="gender-text">Наибольшая база анкет для знакомств</p>
+      <Link className="transition-link" to="/purposeofdating">
+        <label className="button-gender button-man">
           Я мужчина
           <input
-            className="button_gender_selection"
+            className="buttongender-selection"
             type="radio"
             name="gender-selection"
             value="Я мужчина"
@@ -32,11 +32,11 @@ export const GenderSelection = () => {
           </svg>
         </label>
       </Link>
-      <Link className="transition_link" to="/purposeofdating">
-        <label className="button_gender button_woman">
+      <Link className="transition-link" to="/purposeofdating">
+        <label className="button-gender button-woman">
           Я женщина
           <input
-            className="button_gender_selection"
+            className="button-gender-selection"
             type="radio"
             name="gender-selection"
             value="Я женщина"
@@ -59,26 +59,26 @@ export const GenderSelection = () => {
           </svg>
         </label>
       </Link>
-      <div className="block_comments">
+      <div className="block-comments">
         <section className="comment">
           <img
-            className="photo_commenters_lylia"
+            className="photo-commenters-lylia"
             src={photoLylia}
             alt="Фото коментатора Лили"
           />
           <img
-            className="photo_commenters_ehor"
+            className="photo-commenters-ehor"
             src={photoEgor}
             alt="Фото коментатора Егора"
           />
-          <p className="commenters_name">Аня и Дима</p>
-          <span className="data_comment">23 недели назад</span>
-          <p className="comment_text">
+          <p className="commenters-name">Аня и Дима</p>
+          <span className="data-comment">23 недели назад</span>
+          <p className="comment-text">
             Безопасность и анонимность пользователей — наш главный приоритет. Мы
             используем новейшие технологии, чтобы защитить вашу личную
             информацию и данные, указанные при регистрации. Мы используем
             новейшие технологии, чтобы защитить вашу защитить и личную...
-            <span className="link_read_more">Читать полностю</span>
+            <span className="link-read-more">Читать полностю</span>
           </p>
         </section>
       </div>
