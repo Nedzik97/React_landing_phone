@@ -1,9 +1,14 @@
 import "../App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { RegistrationForm } from "./registration-form";
-import { FooterQuastionnaire } from "./footer-quastionnaire";
-import { GenderSelection } from "./gender-selection";
-import { PurposeOfDating } from "./purpose-of-dating";
+import { RegistrationForm } from "./RegistrationForm";
+import { Footer } from "./Footer";
+import { GenderSelection } from "./GenderSelection";
+import { PurposeOfDating } from "./PurposeOfDating";
+
+export const transitionPaths = {
+  purposeofdating: "/purposeofdating",
+  registrationForm: "/registration-form",
+};
 
 function App() {
   return (
@@ -11,10 +16,16 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<GenderSelection />} />
-          <Route path="/purposeofdating" element={<PurposeOfDating />} />
-          <Route path="/registration-form" element={<RegistrationForm />} />
+          <Route
+            path={transitionPaths.purposeofdating}
+            element={<PurposeOfDating />}
+          />
+          <Route
+            path={transitionPaths.registrationForm}
+            element={<RegistrationForm />}
+          />
         </Routes>
-        <FooterQuastionnaire />
+        <Footer />
       </div>
     </BrowserRouter>
   );

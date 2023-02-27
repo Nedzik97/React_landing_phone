@@ -134,8 +134,9 @@ body {
 
 .button-man svg {
 	position: absolute;
-	top: 32%;
-	left: 38%
+	top: 50%;
+	transform: translateY(-50%);
+	left: 38%;
 }
 
 .button-woman svg {
@@ -699,12 +700,14 @@ input[type='radio'] {
 @media (min-width: 320px){
 	.button-man svg {
 		position: absolute;
-		top: 20%;
+		top: 50%;
+		transform: translateY(-50%);
 		left: 29%
 	}
 	.button-woman svg {
 		position: absolute;
-		top: 20%;
+		top: 50%;
+		transform: translateY(-50%);
 		left: 29%
 	}
 }
@@ -716,12 +719,14 @@ input[type='radio'] {
 	}
 	.button-man svg {
 		position: absolute;
-		top: 26%;
+		top: 50%;
+		transform: translateY(-50%);
 		left: 28%
 	}
 	.button-woman svg {
 		position: absolute;
-		top: 26%;
+		top: 50%;
+		transform: translateY(-50%);
 		left: 28%
 	}
 }
@@ -733,12 +738,14 @@ input[type='radio'] {
 	}
 	.button-man svg {
 		position: absolute;
-		top: 28%;
+		top: 50%;
+		transform: translateY(-50%);
 		left: 28%
 	}
 	.button-woman svg {
 		position: absolute;
-		top: 28%;
+		top: 50%;
+		transform: translateY(-50%);
 		left: 28%
 	}
 }
@@ -751,12 +758,14 @@ input[type='radio'] {
 	}
 	.button-man svg {
 		position: absolute;
-		top: 32%;
+		top: 50%;
+		transform: translateY(-50%);
 		left: 28%
 	}
 	.button-woman svg {
 		position: absolute;
-		top: 32%;
+		top: 50%;
+		transform: translateY(-50%);
 		left: 28%
 	}
 }
@@ -764,12 +773,14 @@ input[type='radio'] {
 @media (min-width: 768px) {
 	.button-man svg {
 		position: absolute;
-		top: 36%;
+		top: 50%;
+		transform: translateY(-50%);
 		left: 35%
 	}
 	.button-woman svg {
 		position: absolute;
-		top: 36%;
+		top: 50%;
+		transform: translateY(-50%);
 		left: 35%
 	}
 }
