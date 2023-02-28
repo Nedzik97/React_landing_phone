@@ -7,10 +7,10 @@ export const Footer = () => {
           О проекте
         </Link>
         <Link className="navigation-link" to="#">
-          Подержка
+          Поддержка
         </Link>
         <Link className="navigation-link" to="#">
-          Подержка
+          Поддержка
         </Link>
       </nav>
     </footer>

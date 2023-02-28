@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 
-export const useSelectValidate = () => {
+export const useDateValidation = () => {
   const [selectError, setSelectError] = useState(undefined);
   const [days, setDays] = useState("");
-  const [month, setMounth] = useState("");
+  const [month, setMonth] = useState("");
   const [years, setYears] = useState("");
 
-  const dateValidation = () => {
+  const dateValidation = useCallback(() => {
     const receivedDate = new Date(`/${month}/${days}/${years}`);
     const dataNow = new Date();
     const diffDate = Math.floor(
@@ -17,14 +17,21 @@ export const useSelectValidate = () => {
     } else {
       setSelectError(" Укажите точную дату своего рождения");
     }
-  };
+  }, [days, month, years]);
+
+  useEffect(() => {
+    if (selectError === undefined) {
+      return;
+    }
+    dateValidation();
+  }, [dateValidation, days, month, years, selectError]);
 
   return {
     selectError,
     days,
     setDays,
     month,
-    setMounth,
+    setMonth,
     years,
     setYears,
     dateValidation,

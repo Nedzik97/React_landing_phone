@@ -1,46 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { useNameValidate } from "./UseNameValidate";
-import { usePasswordValidate } from "./UsePasswordValidate";
+import { useNameValidation } from "../hooks/useNameValidation";
+import { usePasswordValidation } from "../hooks/usePasswordValidatation";
+import { useEmailValidation } from "../hooks/useEmailValidation";
+import { useDateValidation } from "../hooks/useDateValidation";
 import { yearsBirth, daysBirth, monthsBirth, changeClassNames } from "../util";
-import { useEmailValidate } from "./UseEmailValidate";
-import { useSelectValidate } from "./UseSelectValidate";
 
 export const RegistrationForm = () => {
-  const { name, setName, nameError, nameHandler } = useNameValidate();
-  const { password, setPassword, passwordError, passwordHendler } =
-    usePasswordValidate();
-  const { email, setEmail, emailError, emailHendler } = useEmailValidate();
+  const { name, setName, nameError } = useNameValidation();
+  const { password, setPassword, passwordError } = usePasswordValidation();
+  const { email, setEmail, emailError } = useEmailValidation();
   const {
     days,
     setDays,
     month,
-    setMounth,
+    setMonth,
     years,
     setYears,
-    dateValidation,
     selectError,
-  } = useSelectValidate();
+    dateValidation,
+  } = useDateValidation();
   const [formValid, setFormValid] = useState(false);
-
-  useEffect(() => {
-    dateValidation();
-  }, [dateValidation, days, month, years]);
-
-  useEffect(() => {
-    nameHandler();
-  }, [nameHandler, name, nameError]);
-
-  useEffect(() => {
-    passwordHendler();
-  }, [passwordHendler, password, passwordError]);
-
-  useEffect(() => {
-    emailHendler();
-  }, [emailHendler, email, emailError]);
-
-  const hendlerButton = (e) => {
-    e.preventDefault();
-  };
 
   useEffect(() => {
     if (nameError || emailError || passwordError || selectError) {
@@ -50,20 +29,27 @@ export const RegistrationForm = () => {
     }
   }, [nameError, emailError, passwordError, selectError]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formValid) {
+      // sendForm() if we have endoint to send data
+    }
+  };
+
   return (
-    <div className="container-create-quastionnaire">
-      <main className="main-create-quastionnaire">
-        <h1 className="title-create-quastionnaire">Создать анкету</h1>
-        <p className="text-create-quastionnaire">
+    <div className="container-regisratation-form">
+      <main className="main-registration-form">
+        <h1 className="title-registration-form">Создать анкету</h1>
+        <p className="text-form">
           Бистрая регистрация, чтобы перейти к общению
         </p>
         <form
-          className="form-quastionnaire"
+          className="registration-form"
           action="#"
           method="post"
-          name="create-quastionnaire"
+          name="create"
         >
-          <label className="label-name-quastionnaire">
+          <label className="label-name">
             Имя:
             <div
               className={changeClassNames(
@@ -78,7 +64,7 @@ export const RegistrationForm = () => {
                 value={name}
                 className={changeClassNames(
                   nameError,
-                  "name-quastionnaire",
+                  "name",
                   "valid",
                   "invalid"
                 )}
@@ -91,14 +77,14 @@ export const RegistrationForm = () => {
               )}
             </div>
           </label>
-          <label className="label-name-quastionnaire">
+          <label className="label-date">
             Дата рождения:
             <div className="input-wrapper" onChange={dateValidation}>
               <select
                 onChange={(e) => setDays(e.target.value)}
                 className={changeClassNames(
                   selectError,
-                  "select-quastionnaire",
+                  "select",
                   "valid",
                   "invalid"
                 )}
@@ -115,10 +101,10 @@ export const RegistrationForm = () => {
                 ))}
               </select>
               <select
-                onChange={(e) => setMounth(e.target.value)}
+                onChange={(e) => setMonth(e.target.value)}
                 className={changeClassNames(
                   selectError,
-                  "select-quastionnaire",
+                  "select",
                   "valid",
                   "invalid"
                 )}
@@ -138,7 +124,7 @@ export const RegistrationForm = () => {
                 onChange={(e) => setYears(e.target.value)}
                 className={changeClassNames(
                   selectError,
-                  "select-quastionnaire",
+                  "select",
                   "valid",
                   "invalid"
                 )}
@@ -159,7 +145,7 @@ export const RegistrationForm = () => {
               )}
             </div>
           </label>
-          <label className="label-password-quastionnaire">
+          <label className="label-password">
             Придумайте пароль:
             <div
               className={changeClassNames(
@@ -174,7 +160,7 @@ export const RegistrationForm = () => {
                 value={password}
                 className={changeClassNames(
                   passwordError,
-                  "password-quastionnaire",
+                  "password",
                   "valid",
                   "invalid"
                 )}
@@ -187,7 +173,7 @@ export const RegistrationForm = () => {
               )}
             </div>
           </label>
-          <label className="label-mail-quastionnaire">
+          <label className="label-mail">
             Email:
             <div
               className={changeClassNames(
@@ -202,7 +188,7 @@ export const RegistrationForm = () => {
                 value={email}
                 className={changeClassNames(
                   emailError,
-                  "mail-quastionnaire",
+                  "mail",
                   "valid",
                   "invalid"
                 )}
@@ -216,8 +202,8 @@ export const RegistrationForm = () => {
             )}
           </label>
           <button
-            className="button-create-quastionnaire"
-            onChange={(e) => hendlerButton(e)}
+            className="submit-button"
+            onChange={(e) => handleSubmit(e)}
             disabled={!formValid}
             type="submit"
           >

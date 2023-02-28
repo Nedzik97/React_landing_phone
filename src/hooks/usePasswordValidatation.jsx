@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { regExpPassword } from "../util";
 
-export const usePasswordValidate = () => {
-  const [password, setPassword] = useState("");
+export const usePasswordValidation = () => {
+  const [password, setPassword] = useState(undefined);
   const [passwordError, setPasswordError] = useState(undefined);
 
-  const passwordHendler = () => {
+  const passwordValidation = useCallback(() => {
     if (!password) {
       setPasswordError("Придумайте надежный пароль");
       return;
@@ -15,13 +15,18 @@ export const usePasswordValidate = () => {
     } else {
       setPasswordError("");
     }
-  };
+  }, [password]);
+
+  useEffect(() => {
+    if (password === undefined) {
+      return;
+    }
+    passwordValidation();
+  }, [passwordValidation, password]);
 
   return {
     password,
     setPassword,
     passwordError,
-    setPasswordError,
-    passwordHendler,
   };
 };
