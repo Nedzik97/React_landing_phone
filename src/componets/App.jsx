@@ -4,11 +4,7 @@ import { RegistrationForm } from "./RegistrationForm";
 import { Footer } from "./Footer";
 import { GenderSelection } from "./GenderSelection";
 import { PurposeOfDating } from "./PurposeOfDating";
-
-export const transitionPaths = {
-  purposeofdating: "/purposeofdating",
-  registrationForm: "/registration-form",
-};
+import { paths } from "../constans";
 
 function App() {
   return (
@@ -16,14 +12,8 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<GenderSelection />} />
-          <Route
-            path={transitionPaths.purposeofdating}
-            element={<PurposeOfDating />}
-          />
-          <Route
-            path={transitionPaths.registrationForm}
-            element={<RegistrationForm />}
-          />
+          <Route path={paths.purposeOfDating} element={<PurposeOfDating />} />
+          <Route path={paths.registrationForm} element={<RegistrationForm />} />
         </Routes>
         <Footer />
       </div>

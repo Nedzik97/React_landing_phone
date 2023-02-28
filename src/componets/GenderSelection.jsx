@@ -1,15 +1,15 @@
 import photoLylia from "../images/lylia-photo.png";
 import photoEgor from "../images/egor-photo.png";
-import { RelationshipChoice } from "./RelationshipChoice";
-import { transitionPaths } from "./App";
+import { SelectionItem } from "./SelectionItem";
+import { paths } from "../constans";
 
 export const GenderSelection = () => {
   return (
     <div className="gender-selection-wrapper">
       <p className="gender-text">Наибольшая база анкет для знакомств</p>
-      <RelationshipChoice
+      <SelectionItem
         text={"Я мужчина"}
-        path={transitionPaths.purposeofdating}
+        path={paths.purposeOfDating}
         className={"button-gender button-man"}
         name={"man"}
         value={"man"}
@@ -32,9 +32,9 @@ export const GenderSelection = () => {
           </svg>
         }
       />
-      <RelationshipChoice
+      <SelectionItem
         text={"Я женщина"}
-        path={transitionPaths.purposeofdating}
+        path={paths.purposeOfDating}
         className={"button-gender button-woman"}
         name={"woman"}
         value={"woman"}

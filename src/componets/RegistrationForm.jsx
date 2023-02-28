@@ -1,55 +1,42 @@
 import React, { useState, useEffect } from "react";
-import {
-  yearsBirth,
-  daysBirth,
-  monthsBirth,
-  regExpName,
-  regExpEmail,
-  regExpPassword,
-  changeClassNames,
-} from "../util";
+import { useNameValidate } from "./UseNameValidate";
+import { usePasswordValidate } from "./UsePasswordValidate";
+import { yearsBirth, daysBirth, monthsBirth, changeClassNames } from "../util";
+import { useEmailValidate } from "./UseEmailValidate";
+import { useSelectValidate } from "./UseSelectValidate";
 
 export const RegistrationForm = () => {
-  const [firstName, setFirstName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [nameError, setNameError] = useState(undefined);
-  const [emailError, setEmailError] = useState(undefined);
-  const [passwordError, setPasswordError] = useState(undefined);
-  const [selectError, setSelectError] = useState(undefined);
+  const { name, setName, nameError, nameHandler } = useNameValidate();
+  const { password, setPassword, passwordError, passwordHendler } =
+    usePasswordValidate();
+  const { email, setEmail, emailError, emailHendler } = useEmailValidate();
+  const {
+    days,
+    setDays,
+    month,
+    setMounth,
+    years,
+    setYears,
+    dateValidation,
+    selectError,
+  } = useSelectValidate();
   const [formValid, setFormValid] = useState(false);
-  const [days, setDays] = useState("");
-  const [month, setMounth] = useState("");
-  const [years, setYears] = useState("");
-
-  const dataValidation = () => {
-    const receivedDate = new Date(`/${month}/${days}/${years}`);
-    const dataNow = new Date();
-    const diffDate = Math.floor(
-      (dataNow - receivedDate) / (1000 * 60 * 60 * 24 * 365)
-    ).valueOf();
-    if (diffDate >= 18 && diffDate <= 80) {
-      setSelectError("");
-    } else {
-      setSelectError(" Укажите точную дату своего рождения");
-    }
-  };
 
   useEffect(() => {
-    dataValidation();
-  }, [dataValidation, days, month, years]);
+    dateValidation();
+  }, [dateValidation, days, month, years]);
 
-  const handlerDays = (e) => {
-    setDays(e.target.value);
-  };
+  useEffect(() => {
+    nameHandler();
+  }, [nameHandler, name, nameError]);
 
-  const handlerMounth = (e) => {
-    setMounth(e.target.value);
-  };
+  useEffect(() => {
+    passwordHendler();
+  }, [passwordHendler, password, passwordError]);
 
-  const handlerYears = (e) => {
-    setYears(e.target.value);
-  };
+  useEffect(() => {
+    emailHendler();
+  }, [emailHendler, email, emailError]);
 
   const hendlerButton = (e) => {
     e.preventDefault();
@@ -62,45 +49,6 @@ export const RegistrationForm = () => {
       setFormValid(true);
     }
   }, [nameError, emailError, passwordError, selectError]);
-
-  const firstNameHandler = (e) => {
-    setFirstName(e.target.value);
-    if (!e.target.value) {
-      setNameError("Введите свое имя");
-      return;
-    }
-    if (!regExpName.test(e.target.value)) {
-      setNameError("Поле заполнено некорректно");
-    } else {
-      setNameError("");
-    }
-  };
-
-  const emailHendler = (e) => {
-    setEmail(e.target.value);
-    if (!e.target.value) {
-      setEmailError("Введите свой Email");
-      return;
-    }
-    if (!regExpEmail.test(e.target.value)) {
-      setEmailError("Email заполнен некорректно");
-    } else {
-      setEmailError("");
-    }
-  };
-
-  const passwordHendler = (e) => {
-    setPassword(e.target.value);
-    if (!e.target.value) {
-      setPasswordError("Придумайте надежный пароль");
-      return;
-    }
-    if (!regExpPassword.test(e.target.value)) {
-      setPasswordError("Пароль должен содержать одну заглавную букву и цифру");
-    } else {
-      setPasswordError("");
-    }
-  };
 
   return (
     <div className="container-create-quastionnaire">
@@ -126,8 +74,8 @@ export const RegistrationForm = () => {
               )}
             >
               <input
-                onInput={(e) => firstNameHandler(e)}
-                value={firstName}
+                onInput={(e) => setName(e.target.value)}
+                value={name}
                 className={changeClassNames(
                   nameError,
                   "name-quastionnaire",
@@ -145,9 +93,9 @@ export const RegistrationForm = () => {
           </label>
           <label className="label-name-quastionnaire">
             Дата рождения:
-            <div className="input-wrapper" onChange={dataValidation}>
+            <div className="input-wrapper" onChange={dateValidation}>
               <select
-                onChange={(e) => handlerDays(e)}
+                onChange={(e) => setDays(e.target.value)}
                 className={changeClassNames(
                   selectError,
                   "select-quastionnaire",
@@ -167,7 +115,7 @@ export const RegistrationForm = () => {
                 ))}
               </select>
               <select
-                onChange={(e) => handlerMounth(e)}
+                onChange={(e) => setMounth(e.target.value)}
                 className={changeClassNames(
                   selectError,
                   "select-quastionnaire",
@@ -187,7 +135,7 @@ export const RegistrationForm = () => {
                 ))}
               </select>
               <select
-                onChange={(e) => handlerYears(e)}
+                onChange={(e) => setYears(e.target.value)}
                 className={changeClassNames(
                   selectError,
                   "select-quastionnaire",
@@ -222,7 +170,7 @@ export const RegistrationForm = () => {
               )}
             >
               <input
-                onInput={(e) => passwordHendler(e)}
+                onInput={(e) => setPassword(e.target.value)}
                 value={password}
                 className={changeClassNames(
                   passwordError,
@@ -250,7 +198,7 @@ export const RegistrationForm = () => {
               )}
             >
               <input
-                onInput={(e) => emailHendler(e)}
+                onInput={(e) => setEmail(e.target.value)}
                 value={email}
                 className={changeClassNames(
                   emailError,
