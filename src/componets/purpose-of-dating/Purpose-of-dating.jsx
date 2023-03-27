@@ -1,32 +1,33 @@
-import { SelectionItem } from "./SelectionItem";
-import { paths } from "../constans";
+import { SelectionItem } from "../Selection-item";
+import { paths } from "../../constans";
+import styles from "./Purpose-of-dating.module.scss";
 
 export const PurposeOfDating = () => {
   return (
-    <div className="page-container">
-      <div className="main-purpose-of-dating">
-        <p className="title-purpose-of-dating">Цель знакомства:</p>
+    <div className={styles.pageContainer}>
+      <div className={styles.mainPurposeOfDating}>
+        <p className={styles.titlePurposeOfDating}>Цель знакомства:</p>
         <SelectionItem
           text={"дружба и общение"}
           path={paths.registrationForm}
-          className={"button-purpose-of-dating"}
+          className={styles.buttonPurposeOfDating}
         />
         <SelectionItem
           text={"долгосрочные отношения"}
           path={paths.registrationForm}
-          className={"button-purpose-of-dating"}
+          className={styles.buttonPurposeOfDating}
         />
         <SelectionItem
           text={"создание семьи"}
           path={paths.registrationForm}
-          className={"button-purpose-of-dating"}
+          className={styles.buttonPurposeOfDating}
         />
         <SelectionItem
           text={"встречи без обязательств"}
           path={paths.registrationForm}
-          className={"button-purpose-of-dating"}
+          className={styles.buttonPurposeOfDating}
         />
-        <p className="promt-text">
+        <p className={styles.promtText}>
           Чтобы идеально подобрать для вас пару, ответьте на несколько вопросов
         </p>
       </div>

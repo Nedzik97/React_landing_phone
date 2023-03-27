@@ -1,0 +1,43 @@
+$registration-label-color: #FFFFFF;
+$border-focus-color: #FFB45C;
+$border-valid-color: #599F39;
+$border-invalid-color: #FF5E5E;
+$text-error-color: #DC143C;
+
+%buttons-transition {
+	width: 100%;
+	min-height: 4.4rem;
+	box-sizing: border-box;
+	font-family: "Jost", sans-serif;
+	font-weight: 600;
+	color: #242530;
+	background: linear-gradient(180deg, #FFB45C 0%, #FFA438 100%);
+	box-shadow: 0 0 1rem rgba(255, 162, 53, 0.25);
+	border-radius: 1rem;
+	cursor: pointer;
+	border: none;
+}
+
+%registration-form-label {
+	position: relative;
+	font-size: 1.4rem;
+	font-weight: 700;
+	line-height: 1.6rem;
+	color: $registration-label-color;
+}
+
+%form-input {
+	position: relative;
+	width: 100%;
+	padding: 1.4rem 0 1.4rem 1.6rem;
+	margin: 0.6rem 0 1.8rem 0;
+	font-family: "Roboto", sans-serif;
+	font-size: 1.4rem;
+	font-weight: 400;
+	color: #242530;
+	background: #C7C8D0;
+	box-shadow: inset 0.1rem 0.1rem 0.6rem rgba(36, 37, 48, 0.5);
+	border-radius: 1rem;
+	border: none;
+	box-sizing: border-box;
+}

@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useNameValidation } from "../hooks/useNameValidation";
-import { usePasswordValidation } from "../hooks/usePasswordValidatation";
-import { useEmailValidation } from "../hooks/useEmailValidation";
-import { useDateValidation } from "../hooks/useDateValidation";
-import { yearsBirth, daysBirth, monthsBirth, changeClassNames } from "../util";
+import cx from "classnames";
+import { useNameValidation } from "../../hooks/useNameValidation";
+import { usePasswordValidation } from "../../hooks/usePasswordValidatation";
+import { useEmailValidation } from "../../hooks/useEmailValidation";
+import { useDateValidation } from "../../hooks/useDateValidation";
+import styles from "./Registration-form.module.scss";
+
+import { yearsBirth, daysBirth, monthsBirth } from "../../util";
 
 export const RegistrationForm = () => {
   const { name, setName, nameError } = useNameValidation();
@@ -37,57 +40,54 @@ export const RegistrationForm = () => {
   };
 
   return (
-    <div className="container-regisratation-form">
-      <main className="main-registration-form">
-        <h1 className="title-registration-form">Создать анкету</h1>
-        <p className="text-form">
+    <div className={styles.containerRegisratationForm}>
+      <main className={styles.mainRegistrationForm}>
+        <h1 className={styles.titleRegistrationForm}>Создать анкету</h1>
+        <p className={styles.textForm}>
           Бистрая регистрация, чтобы перейти к общению
         </p>
         <form
-          className="registration-form"
+          className={styles.RegistrationForm}
           action="#"
           method="post"
           name="create"
         >
-          <label className="label-name">
+          <label className={styles.labelName}>
             Имя:
             <div
-              className={changeClassNames(
-                nameError,
-                "name-wrapper",
-                "valid",
-                "invalid"
-              )}
+              className={cx(styles.nameWrapper, {
+                [styles.nameWrapperValid]: nameError === "",
+                [styles.nameWrapperInvalid]:
+                  nameError !== "" && nameError !== undefined,
+              })}
             >
               <input
                 onInput={(e) => setName(e.target.value)}
                 value={name}
-                className={changeClassNames(
-                  nameError,
-                  "name",
-                  "valid",
-                  "invalid"
-                )}
+                className={cx(styles.name, {
+                  [styles.nameValid]: nameError === "",
+                  [styles.nameInvalid]:
+                    nameError !== "" && nameError !== undefined,
+                })}
                 type="text"
                 name="name"
                 placeholder="Введите имя"
               />
               {nameError && (
-                <span className="text-name-error">{nameError}</span>
+                <span className={styles.textNameError}>{nameError}</span>
               )}
             </div>
           </label>
-          <label className="label-date">
+          <label className={styles.labelDate}>
             Дата рождения:
-            <div className="input-wrapper" onChange={dateValidation}>
+            <div className={styles.selectWrapper} onChange={dateValidation}>
               <select
                 onChange={(e) => setDays(e.target.value)}
-                className={changeClassNames(
-                  selectError,
-                  "select",
-                  "valid",
-                  "invalid"
-                )}
+                className={cx(styles.select, {
+                  [styles.selectValid]: selectError === "",
+                  [styles.selectInvalid]:
+                    selectError !== "" && selectError !== undefined,
+                })}
                 aria-label="Дата рождения"
                 value={days}
               >
@@ -102,12 +102,11 @@ export const RegistrationForm = () => {
               </select>
               <select
                 onChange={(e) => setMonth(e.target.value)}
-                className={changeClassNames(
-                  selectError,
-                  "select",
-                  "valid",
-                  "invalid"
-                )}
+                className={cx(styles.select, {
+                  [styles.selectValid]: selectError === "",
+                  [styles.selectInvalid]:
+                    selectError !== "" && selectError !== undefined,
+                })}
                 aria-label="Месяц рождения"
                 value={month}
               >
@@ -122,12 +121,11 @@ export const RegistrationForm = () => {
               </select>
               <select
                 onChange={(e) => setYears(e.target.value)}
-                className={changeClassNames(
-                  selectError,
-                  "select",
-                  "valid",
-                  "invalid"
-                )}
+                className={cx(styles.select, {
+                  [styles.selectValid]: selectError === "",
+                  [styles.selectInvalid]:
+                    selectError !== "" && selectError !== undefined,
+                })}
                 aria-label="Год рождения"
                 value={years}
               >
@@ -141,84 +139,80 @@ export const RegistrationForm = () => {
                 ))}
               </select>
               {selectError && (
-                <span className="select-error">{selectError}</span>
+                <span className={styles.selectError}>{selectError}</span>
               )}
             </div>
           </label>
-          <label className="label-password">
+          <label className={styles.labelPassword}>
             Придумайте пароль:
             <div
-              className={changeClassNames(
-                passwordError,
-                "password-wrapper",
-                "valid",
-                "invalid"
-              )}
+              className={cx(styles.passwordWrapper, {
+                [styles.passwordWrapperValid]: passwordError === "",
+                [styles.passwordWrappperInvalid]:
+                  passwordError !== "" && passwordError !== undefined,
+              })}
             >
               <input
                 onInput={(e) => setPassword(e.target.value)}
                 value={password}
-                className={changeClassNames(
-                  passwordError,
-                  "password",
-                  "valid",
-                  "invalid"
-                )}
+                className={cx(styles.password, {
+                  [styles.passwordValid]: passwordError === "",
+                  [styles.passwordInvalid]:
+                    passwordError !== "" && passwordError !== undefined,
+                })}
                 type="password"
                 name="password"
                 placeholder="Минимум 8 символов"
               />
               {passwordError && (
-                <div className="text-password-error">{passwordError}</div>
+                <div className={styles.textPasswordError}>{passwordError}</div>
               )}
             </div>
           </label>
-          <label className="label-mail">
+          <label className={styles.labelMail}>
             Email:
             <div
-              className={changeClassNames(
-                emailError,
-                "mail-wrapper",
-                "valid",
-                "valid"
-              )}
+              className={cx(styles.mailWrapper, {
+                [styles.mailWrapperValid]: emailError === "",
+                [styles.mailWrapperInvalid]:
+                  emailError !== "" && emailError !== undefined,
+              })}
             >
               <input
                 onInput={(e) => setEmail(e.target.value)}
                 value={email}
-                className={changeClassNames(
-                  emailError,
-                  "mail",
-                  "valid",
-                  "invalid"
-                )}
+                className={cx(styles.mail, {
+                  [styles.mailValid]: emailError === "",
+                  [styles.mailInvalid]:
+                    emailError !== "" && emailError !== undefined,
+                })}
                 type="mail"
                 name="mail"
                 placeholder="Введите свою почту"
               />
             </div>
             {emailError && (
-              <span className="text-email-error">{emailError}</span>
+              <span className={styles.textEmailError}>{emailError}</span>
             )}
           </label>
           <button
-            className="submit-button"
+            className={styles.submitButton}
             onChange={(e) => handleSubmit(e)}
             disabled={!formValid}
             type="submit"
           >
             Создать
           </button>
-          <label className="label-checkbox">
+          <label className={styles.labelCheckbox}>
             Регистрируясь, я подтверждаю что мне исполнилось 18 лет. Я принимаю
             условия лицензионного соглашения, политики конфиденциальности,
             обработки персональных данных.
             <input
-              className="input-checkbox"
+              className={styles.inputCheckbox}
               type="checkbox"
               name="proof-of-age"
             />
-            <span className="checkbox-mark"></span>
+            <span className={styles.checkboxMark}></span>
           </label>
         </form>
       </main>

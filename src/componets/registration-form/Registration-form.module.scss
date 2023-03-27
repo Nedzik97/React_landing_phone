@@ -1,0 +1,321 @@
+@import "../templates.module.scss";
+
+.containerRegisratationForm {
+	min-width: 320px;
+	min-height: 460px;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
+.mainRegistrationForm {
+	padding: 0 2.4rem;
+	background-image: url("../../images/bg-create-quastionnaire.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top;
+	background-color: #242530;
+}
+
+.titleRegistrationForm {
+	margin: 0;
+	margin-top: 13.5rem;
+	font-family: 'Jost', sans-serif;
+	font-size: 1.8rem;
+	font-weight: 700;
+	line-height: 2.6rem;
+	letter-spacing: 0.03em;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.textForm {
+	margin: 0.4rem 0 1.2rem 0;
+	font-size: 1.4rem;
+	font-weight: 400;
+	line-height: 1.6rem;
+	color: #AAB2BD;
+	opacity: 0.6;
+	text-align: center;
+}
+
+.labelName {
+	@extend %registration-form-label;
+};
+
+.nameWrapper {
+	position: relative;
+}
+
+.nameWrapperValid {
+	&::before {
+		position: absolute;
+		content: "";
+		background-image: url('../../images/icons/check-mark.svg');
+		background-repeat: no-repeat;
+		width: 19px;
+		height: 14px;
+		top: 38%;
+		right: 5%;
+		z-index: 2;
+	}
+}
+
+.nameWrapperInvalid {
+	&::before {
+		position: absolute;
+		content: "";
+		background-image: url('../../images/icons/cross.svg');
+		background-repeat: no-repeat;
+		width: 19px;
+		height: 14px;
+		top: 38%;
+		right: 5%;
+		z-index: 2;
+	}
+}
+
+.name {
+	@extend %form-input;
+	&:focus {
+		outline: none;
+		border: 3px solid $border-focus-color;
+	}
+}
+
+.nameValid {
+	border: 3px solid $border-valid-color;
+}
+
+.nameInvalid {
+	outline: none;
+	border: 3px solid $border-invalid-color;
+}
+
+.textNameError {
+	position: absolute;
+	top: 5.6rem;
+	left: 1rem;
+	width: 50rem;
+	font-weight: 400;
+	font-size: 1.4rem;
+	color: $text-error-color;
+}
+
+.labelDate {
+	@extend %registration-form-label;
+};
+
+.selectWrapper {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+}
+
+.select {
+	@extend %form-input;
+	width: 32.7%;
+	&:focus {
+		outline: none;
+		border: 3px solid $border-focus-color;
+	}
+	&:not(:last-of-type) {
+		margin-right: 0.8rem;
+	}
+}
+
+.selectValid {
+	border: 3px solid $border-valid-color;
+}
+
+.selectInvalid {
+	outline: none;
+	border: 3px solid $border-invalid-color;
+}
+
+.selectError {
+	position: absolute;
+	top: 5.7rem;
+	left: 1rem;
+	width: 100%;
+	font-weight: 400;
+	font-size: 1.4rem;
+	color: $text-error-color;
+}
+
+.labelPassword {
+	@extend %registration-form-label;
+};
+
+.passwordWrapper {
+	position: relative;
+}
+
+.password {
+	@extend %form-input;
+	&:focus {
+		outline: none;
+		border: 3px solid $border-focus-color;
+	}
+}
+
+.passwordValid {
+	border: 3px solid $border-valid-color;
+}
+
+.passwordInvalid {
+	outline: none;
+	border: 3px solid $border-invalid-color;
+}
+
+.passwordWrapperValid {
+	&::before {
+		position: absolute;
+		content: "";
+		background-image: url('../../images/icons/check-mark.svg');
+		background-repeat: no-repeat;
+		width: 19px;
+		height: 14px;
+		top: 38%;
+		right: 5%;
+		z-index: 2;
+	}
+}
+
+.passwordWrapperInvalid {
+	&::before {
+		position: absolute;
+		content: "";
+		background-image: url('../../images/icons/cross.svg');
+		background-repeat: no-repeat;
+		width: 19px;
+		height: 14px;
+		top: 38%;
+		right: 5%;
+		transform: translateY(-50%);
+		z-index: 2;
+	}
+}
+
+.textPasswordError {
+	position: absolute;
+	top: 5.6rem;
+	left: 1rem;
+	width: 50rem;
+	font-weight: 400;
+	font-size: 1.4rem;
+	color: $text-error-color;
+}
+
+.labelMail {
+	@extend %registration-form-label;
+}
+
+.mailWrapper {
+	position: relative;
+}
+
+.mail {
+	@extend %form-input;
+	&:focus {
+		outline: none;
+		border: 3px solid $border-focus-color;
+	}
+}
+
+.mailWrapperValid {
+	&::before {
+		position: absolute;
+		content: "";
+		background-image: url('../../images/icons/check-mark.svg');
+		background-repeat: no-repeat;
+		width: 19px;
+		height: 14px;
+		top: 38%;
+		right: 5%;
+		z-index: 2;
+	}
+}
+
+.mailWrapperInvalid {
+	&::before {
+		position: absolute;
+		content: "";
+		background-image: url('../../images/icons/cross.svg');
+		background-repeat: no-repeat;
+		width: 19px;
+		height: 14px;
+		top: 38%;
+		right: 5%;
+		transform: translateY(-50%);
+		z-index: 2;
+	}
+}
+
+.mailValid {
+	border: 3px solid $border-valid-color;
+}
+
+.mailInvalid {
+	outline: none;
+	border: 3px solid $border-invalid-color;
+}
+
+.textEmailError {
+	position: absolute;
+	top: 7rem;
+	left: 1rem;
+	width: 50rem;
+	font-weight: 400;
+	font-size: 1.4rem;
+	color: $text-error-color;
+}
+
+.submitButton {
+	@extend %buttons-transition;
+	padding: 1.3rem 0 1.4rem 0;
+	margin: 2.4rem 0 1.2rem 0;
+	font-size: 1.4rem;
+	font-weight: 900;
+	line-height: 1.6rem;
+	letter-spacing: 0.02em;
+	&:disabled {
+		opacity: 0.4;
+	}
+}
+
+.labelCheckbox {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding-left: 2.2rem;
+	margin-bottom: 4.2rem;
+	font-family: "Roboto", sans-serif;
+	font-size: 0.9rem;
+	font-weight: 400;
+	line-height: 1.2rem;
+	color: #656D78;
+	cursor: pointer;
+}
+
+.checkboxMark {
+	position: absolute;
+	top: 15px;
+	left: 4px;
+	background-image: url("../../images/icons/bg-checkbox.svg");
+	width: 13px;
+	height: 13px;
+}
+
+.inputCheckbox {
+	appearance: none;
+}
+
+.inputCheckbox[type="checkbox"]:checked ~ .checkbox-mark  {
+	width: 13px;
+	height: 13px;
+	background: url("../../images/icons/check-mark-icon.svg") 0 0 repeat;
+	background-position: center;
+}
+

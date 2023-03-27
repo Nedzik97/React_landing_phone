@@ -1,15 +1,15 @@
-import "../App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { RegistrationForm } from "./RegistrationForm";
-import { Footer } from "./Footer";
-import { GenderSelection } from "./GenderSelection";
-import { PurposeOfDating } from "./PurposeOfDating";
-import { paths } from "../constans";
+import { RegistrationForm } from "../registration-form/Registration-form";
+import { Footer } from "../footer/Footer";
+import { GenderSelection } from "../gender-selection/Gender-selection";
+import { PurposeOfDating } from "../purpose-of-dating/Purpose-of-dating";
+import { paths } from "../../constans";
+import styles from "./App.module.scss";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className={styles.app}>
         <Routes>
           <Route path="/" element={<GenderSelection />} />
           <Route path={paths.purposeOfDating} element={<PurposeOfDating />} />

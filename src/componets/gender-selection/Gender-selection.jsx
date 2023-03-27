@@ -1,16 +1,17 @@
-import photoLylia from "../images/lylia-photo.png";
-import photoEgor from "../images/egor-photo.png";
-import { SelectionItem } from "./SelectionItem";
-import { paths } from "../constans";
+import photoLylia from "../../images/lylia-photo.png";
+import photoEgor from "../../images/egor-photo.png";
+import { SelectionItem } from "../Selection-item";
+import { paths } from "../../constans";
+import styles from "./Gender-selection.module.scss";
 
 export const GenderSelection = () => {
   return (
-    <div className="gender-selection-wrapper">
-      <p className="gender-text">Наибольшая база анкет для знакомств</p>
+    <div className={styles.genderSelectionWrapper}>
+      <p className={styles.genderText}>Наибольшая база анкет для знакомств</p>
       <SelectionItem
         text={"Я мужчина"}
         path={paths.purposeOfDating}
-        className={"button-gender button-man"}
+        className={`${styles.buttonGender} ${styles.buttonMan}`}
         name={"man"}
         value={"man"}
         icon={
@@ -35,7 +36,7 @@ export const GenderSelection = () => {
       <SelectionItem
         text={"Я женщина"}
         path={paths.purposeOfDating}
-        className={"button-gender button-woman"}
+        className={`${styles.buttonGender} ${styles.buttonWoman}`}
         name={"woman"}
         value={"woman"}
         icon={
@@ -57,26 +58,26 @@ export const GenderSelection = () => {
           </svg>
         }
       />
-      <div className="block-comments">
-        <section className="comment">
+      <div className={styles.blockComments}>
+        <section className={styles.comment}>
           <img
-            className="photo-commenters-lylia"
+            className={styles.photoCommentersLylia}
             src={photoLylia}
             alt="Фото коментатора Лили"
           />
           <img
-            className="photo-commenters-ehor"
+            className={styles.photoCommentersEhor}
             src={photoEgor}
             alt="Фото коментатора Егора"
           />
-          <p className="commenters-name">Аня и Дима</p>
-          <span className="data-comment">23 недели назад</span>
-          <p className="comment-text">
+          <p className={styles.commentersName}>Аня и Дима</p>
+          <span className={styles.dataComment}>23 недели назад</span>
+          <p className={styles.commentText}>
             Безопасность и анонимность пользователей — наш главный приоритет. Мы
             используем новейшие технологии, чтобы защитить вашу личную
             информацию и данные, указанные при регистрации. Мы используем
             новейшие технологии, чтобы защитить вашу защитить и личную...
-            <span className="link-read-more">Читать полностю</span>
+            <span className={styles.linkReadMore}>Читать полностю</span>
           </p>
         </section>
       </div>
