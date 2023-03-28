@@ -1,20 +1,17 @@
-@import "../templates.module.scss";
-
-.containerRegisratationForm {
-	min-width: 320px;
-	min-height: 460px;
-	display: flex;
-	flex-direction: column;
-	margin: 0 auto;
-}
+@import "../../styles/variables.scss";
 
 .mainRegistrationForm {
-	padding: 0 2.4rem;
+	height: 100vh;
+	padding: 0 2.4rem 10rem 2.4rem;
 	background-image: url("../../images/bg-create-quastionnaire.jpg");
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position: top;
 	background-color: #242530;
+}
+
+.RegistrationForm {
+	padding-bottom: 5rem;
 }
 
 .titleRegistrationForm {
@@ -95,7 +92,7 @@
 
 .textNameError {
 	position: absolute;
-	top: 5.6rem;
+	top: 5.3rem;
 	left: 1rem;
 	width: 50rem;
 	font-weight: 400;
@@ -136,7 +133,7 @@
 
 .selectError {
 	position: absolute;
-	top: 5.7rem;
+	top: 5.3rem;
 	left: 1rem;
 	width: 100%;
 	font-weight: 400;
@@ -177,7 +174,7 @@
 		background-repeat: no-repeat;
 		width: 19px;
 		height: 14px;
-		top: 38%;
+		top: 40%;
 		right: 5%;
 		z-index: 2;
 	}
@@ -191,7 +188,7 @@
 		background-repeat: no-repeat;
 		width: 19px;
 		height: 14px;
-		top: 38%;
+		top: 40%;
 		right: 5%;
 		transform: translateY(-50%);
 		z-index: 2;
@@ -200,7 +197,7 @@
 
 .textPasswordError {
 	position: absolute;
-	top: 5.6rem;
+	top: 5.3rem;
 	left: 1rem;
 	width: 50rem;
 	font-weight: 400;
@@ -232,7 +229,7 @@
 		background-repeat: no-repeat;
 		width: 19px;
 		height: 14px;
-		top: 38%;
+		top: 40%;
 		right: 5%;
 		z-index: 2;
 	}
@@ -246,7 +243,7 @@
 		background-repeat: no-repeat;
 		width: 19px;
 		height: 14px;
-		top: 38%;
+		top: 40%;
 		right: 5%;
 		transform: translateY(-50%);
 		z-index: 2;

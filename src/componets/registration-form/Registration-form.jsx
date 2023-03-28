@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
 import cx from "classnames";
 import { useNameValidation } from "../../hooks/useNameValidation";
 import { usePasswordValidation } from "../../hooks/usePasswordValidatation";
 import { useEmailValidation } from "../../hooks/useEmailValidation";
 import { useDateValidation } from "../../hooks/useDateValidation";
+import { yearsBirth, daysBirth, monthsBirth } from "../../util";
 import styles from "./Registration-form.module.scss";
 
-import { yearsBirth, daysBirth, monthsBirth } from "../../util";
-
 export const RegistrationForm = () => {
-  const { name, setName, nameError } = useNameValidation();
-  const { password, setPassword, passwordError } = usePasswordValidation();
-  const { email, setEmail, emailError } = useEmailValidation();
+  const { name, setName, nameError, isValidateName } = useNameValidation();
+  const { password, setPassword, passwordError, isValidatePassword } =
+    usePasswordValidation();
+  const { email, setEmail, emailError, isValidateEmail } = useEmailValidation();
   const {
     days,
     setDays,
@@ -21,201 +20,185 @@ export const RegistrationForm = () => {
     setYears,
     selectError,
     dateValidation,
+    isValidateDate,
   } = useDateValidation();
-  const [formValid, setFormValid] = useState(false);
-
-  useEffect(() => {
-    if (nameError || emailError || passwordError || selectError) {
-      setFormValid(false);
-    } else {
-      setFormValid(true);
-    }
-  }, [nameError, emailError, passwordError, selectError]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formValid) {
-      // sendForm() if we have endoint to send data
-    }
   };
 
+  const isButtonDisable =
+    !!isValidateName &&
+    !!isValidateDate &&
+    !!isValidatePassword &&
+    !!isValidateEmail;
+  console.log(isButtonDisable);
   return (
-    <div className={styles.containerRegisratationForm}>
-      <main className={styles.mainRegistrationForm}>
-        <h1 className={styles.titleRegistrationForm}>Создать анкету</h1>
-        <p className={styles.textForm}>
-          Бистрая регистрация, чтобы перейти к общению
-        </p>
-        <form
-          className={styles.RegistrationForm}
-          action="#"
-          method="post"
-          name="create"
-        >
-          <label className={styles.labelName}>
-            Имя:
-            <div
-              className={cx(styles.nameWrapper, {
-                [styles.nameWrapperValid]: nameError === "",
-                [styles.nameWrapperInvalid]:
-                  nameError !== "" && nameError !== undefined,
-              })}
-            >
-              <input
-                onInput={(e) => setName(e.target.value)}
-                value={name}
-                className={cx(styles.name, {
-                  [styles.nameValid]: nameError === "",
-                  [styles.nameInvalid]:
-                    nameError !== "" && nameError !== undefined,
-                })}
-                type="text"
-                name="name"
-                placeholder="Введите имя"
-              />
-              {nameError && (
-                <span className={styles.textNameError}>{nameError}</span>
-              )}
-            </div>
-          </label>
-          <label className={styles.labelDate}>
-            Дата рождения:
-            <div className={styles.selectWrapper} onChange={dateValidation}>
-              <select
-                onChange={(e) => setDays(e.target.value)}
-                className={cx(styles.select, {
-                  [styles.selectValid]: selectError === "",
-                  [styles.selectInvalid]:
-                    selectError !== "" && selectError !== undefined,
-                })}
-                aria-label="Дата рождения"
-                value={days}
-              >
-                <option value="" disabled>
-                  ДД
-                </option>
-                {daysBirth.map((day, index) => (
-                  <option value={day} key={index}>
-                    {day}
-                  </option>
-                ))}
-              </select>
-              <select
-                onChange={(e) => setMonth(e.target.value)}
-                className={cx(styles.select, {
-                  [styles.selectValid]: selectError === "",
-                  [styles.selectInvalid]:
-                    selectError !== "" && selectError !== undefined,
-                })}
-                aria-label="Месяц рождения"
-                value={month}
-              >
-                <option value="" disabled>
-                  MM
-                </option>
-                {monthsBirth.map((mounth, index) => (
-                  <option value={mounth} key={index}>
-                    {mounth}
-                  </option>
-                ))}
-              </select>
-              <select
-                onChange={(e) => setYears(e.target.value)}
-                className={cx(styles.select, {
-                  [styles.selectValid]: selectError === "",
-                  [styles.selectInvalid]:
-                    selectError !== "" && selectError !== undefined,
-                })}
-                aria-label="Год рождения"
-                value={years}
-              >
-                <option value="" disabled>
-                  ГГГГ
-                </option>
-                {yearsBirth.map((year, index) => (
-                  <option value={year} key={index}>
-                    {year}
-                  </option>
-                ))}
-              </select>
-              {selectError && (
-                <span className={styles.selectError}>{selectError}</span>
-              )}
-            </div>
-          </label>
-          <label className={styles.labelPassword}>
-            Придумайте пароль:
-            <div
-              className={cx(styles.passwordWrapper, {
-                [styles.passwordWrapperValid]: passwordError === "",
-                [styles.passwordWrappperInvalid]:
-                  passwordError !== "" && passwordError !== undefined,
-              })}
-            >
-              <input
-                onInput={(e) => setPassword(e.target.value)}
-                value={password}
-                className={cx(styles.password, {
-                  [styles.passwordValid]: passwordError === "",
-                  [styles.passwordInvalid]:
-                    passwordError !== "" && passwordError !== undefined,
-                })}
-                type="password"
-                name="password"
-                placeholder="Минимум 8 символов"
-              />
-              {passwordError && (
-                <div className={styles.textPasswordError}>{passwordError}</div>
-              )}
-            </div>
-          </label>
-          <label className={styles.labelMail}>
-            Email:
-            <div
-              className={cx(styles.mailWrapper, {
-                [styles.mailWrapperValid]: emailError === "",
-                [styles.mailWrapperInvalid]:
-                  emailError !== "" && emailError !== undefined,
-              })}
-            >
-              <input
-                onInput={(e) => setEmail(e.target.value)}
-                value={email}
-                className={cx(styles.mail, {
-                  [styles.mailValid]: emailError === "",
-                  [styles.mailInvalid]:
-                    emailError !== "" && emailError !== undefined,
-                })}
-                type="mail"
-                name="mail"
-                placeholder="Введите свою почту"
-              />
-            </div>
-            {emailError && (
-              <span className={styles.textEmailError}>{emailError}</span>
-            )}
-          </label>
-          <button
-            className={styles.submitButton}
-            onChange={(e) => handleSubmit(e)}
-            disabled={!formValid}
-            type="submit"
+    <main className={styles.mainRegistrationForm}>
+      <h1 className={styles.titleRegistrationForm}>Создать анкету</h1>
+      <p className={styles.textForm}>
+        Бистрая регистрация, чтобы перейти к общению
+      </p>
+      <form
+        className={styles.RegistrationForm}
+        action="#"
+        method="post"
+        name="create"
+      >
+        <label className={styles.labelName}>
+          Имя:
+          <div
+            className={cx(styles.nameWrapper, {
+              [styles.nameWrapperValid]: isValidateName,
+              [styles.nameWrapperInvalid]: !isValidateName,
+            })}
           >
-            Создать
-          </button>
-          <label className={styles.labelCheckbox}>
-            Регистрируясь, я подтверждаю что мне исполнилось 18 лет. Я принимаю
-            условия лицензионного соглашения, политики конфиденциальности,
-            обработки персональных данных.
             <input
-              className={styles.inputCheckbox}
-              type="checkbox"
-              name="proof-of-age"
+              onInput={(e) => setName(e.target.value)}
+              value={name}
+              className={cx(styles.name, {
+                [styles.nameValid]: isValidateName,
+                [styles.nameInvalid]: !isValidateName,
+              })}
+              type="text"
+              name="name"
+              placeholder="Введите имя"
             />
-            <span className={styles.checkboxMark}></span>
-          </label>
-        </form>
-      </main>
-    </div>
+            {nameError && (
+              <span className={styles.textNameError}>{nameError}</span>
+            )}
+          </div>
+        </label>
+        <label className={styles.labelDate}>
+          Дата рождения:
+          <div className={styles.selectWrapper} onChange={dateValidation}>
+            <select
+              onChange={(e) => setDays(e.target.value)}
+              className={cx(styles.select, {
+                [styles.selectValid]: isValidateDate,
+                [styles.selectInvalid]: !isValidateDate,
+              })}
+              aria-label="Дата рождения"
+              value={days}
+            >
+              <option value="" disabled>
+                ДД
+              </option>
+              {daysBirth.map((day, index) => (
+                <option value={day} key={index}>
+                  {day}
+                </option>
+              ))}
+            </select>
+            <select
+              onChange={(e) => setMonth(e.target.value)}
+              className={cx(styles.select, {
+                [styles.selectValid]: isValidateDate,
+                [styles.selectInvalid]: !isValidateDate,
+              })}
+              aria-label="Месяц рождения"
+              value={month}
+            >
+              <option value="" disabled>
+                MM
+              </option>
+              {monthsBirth.map((mounth, index) => (
+                <option value={mounth} key={index}>
+                  {mounth}
+                </option>
+              ))}
+            </select>
+            <select
+              onChange={(e) => setYears(e.target.value)}
+              className={cx(styles.select, {
+                [styles.selectValid]: isValidateDate,
+                [styles.selectInvalid]: !isValidateDate,
+              })}
+              aria-label="Год рождения"
+              value={years}
+            >
+              <option value="" disabled>
+                ГГГГ
+              </option>
+              {yearsBirth.map((year, index) => (
+                <option value={year} key={index}>
+                  {year}
+                </option>
+              ))}
+            </select>
+            {selectError && (
+              <span className={styles.selectError}>{selectError}</span>
+            )}
+          </div>
+        </label>
+        <label className={styles.labelPassword}>
+          Придумайте пароль:
+          <div
+            className={cx(styles.passwordWrapper, {
+              [styles.passwordWrapperValid]: isValidatePassword,
+              [styles.passwordWrapperInvalid]: !isValidatePassword,
+            })}
+          >
+            <input
+              onInput={(e) => setPassword(e.target.value)}
+              value={password}
+              className={cx(styles.password, {
+                [styles.passwordValid]: isValidatePassword,
+                [styles.passwordInvalid]: !isValidatePassword,
+              })}
+              type="password"
+              name="password"
+              placeholder="Минимум 8 символов"
+            />
+            {passwordError && (
+              <div className={styles.textPasswordError}>{passwordError}</div>
+            )}
+          </div>
+        </label>
+        <label className={styles.labelMail}>
+          Email:
+          <div
+            className={cx(styles.mailWrapper, {
+              [styles.mailWrapperValid]: isValidateEmail,
+              [styles.mailWrapperInvalid]: !isValidateEmail,
+            })}
+          >
+            <input
+              onInput={(e) => setEmail(e.target.value)}
+              value={email}
+              className={cx(styles.mail, {
+                [styles.mailValid]: isValidateEmail,
+                [styles.mailInvalid]: !isValidateEmail,
+              })}
+              type="mail"
+              name="mail"
+              placeholder="Введите свою почту"
+            />
+          </div>
+          {emailError && (
+            <span className={styles.textEmailError}>{emailError}</span>
+          )}
+        </label>
+        <button
+          className={styles.submitButton}
+          onChange={(e) => handleSubmit(e)}
+          disabled={!isButtonDisable}
+          type="submit"
+        >
+          Создать
+        </button>
+        <label className={styles.labelCheckbox}>
+          Регистрируясь, я подтверждаю что мне исполнилось 18 лет. Я принимаю
+          условия лицензионного соглашения, политики конфиденциальности,
+          обработки персональных данных.
+          <input
+            className={styles.inputCheckbox}
+            type="checkbox"
+            name="proof-of-age"
+          />
+          <span className={styles.checkboxMark}></span>
+        </label>
+      </form>
+    </main>
   );
 };

@@ -1,14 +1,7 @@
-@import "../templates.module.scss";
-
-.pageContainer {
-	display: flex;
-	flex-direction: column;
-	min-width: 320px;
-	min-height: 460px;
-	margin: 0 auto;
-}
+@import "../../styles/variables.scss";
 
 .mainPurposeOfDating {
+	height: 100vh;
 	background-position: top;
 	background-size: 100%;
 	background-image:  url("../../images/bg-purpose-dating.jpg"), linear-gradient(180deg, rgba(36, 37, 48, 0) 30.21%, #242530 95.83%);

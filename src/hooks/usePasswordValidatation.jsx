@@ -4,16 +4,20 @@ import { regExpPassword } from "../util";
 export const usePasswordValidation = () => {
   const [password, setPassword] = useState(undefined);
   const [passwordError, setPasswordError] = useState(undefined);
+  const [isValidatePassword, setIsValidatePassword] = useState(false);
 
   const passwordValidation = useCallback(() => {
     if (!password) {
       setPasswordError("Придумайте надежный пароль");
+      setIsValidatePassword(false);
       return;
     }
     if (!regExpPassword.test(password)) {
       setPasswordError("Пароль должен содержать одну заглавную букву и цифру");
+      setIsValidatePassword(false);
     } else {
       setPasswordError("");
+      setIsValidatePassword(true);
     }
   }, [password]);
 
@@ -28,5 +32,6 @@ export const usePasswordValidation = () => {
     password,
     setPassword,
     passwordError,
+    isValidatePassword,
   };
 };

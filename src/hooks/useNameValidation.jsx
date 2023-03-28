@@ -4,16 +4,20 @@ import { regExpName } from "../util";
 export const useNameValidation = () => {
   const [name, setName] = useState(undefined);
   const [nameError, setNameError] = useState(undefined);
+  const [isValidateName, setIsValidateName] = useState(false);
 
   const nameValidation = useCallback(() => {
     if (!name) {
       setNameError("Введите свое имя");
+      setIsValidateName(false);
       return;
     }
     if (!regExpName.test(name)) {
       setNameError("Поле заполнено некорректно");
+      setIsValidateName(false);
     } else {
       setNameError("");
+      setIsValidateName(true);
     }
   }, [name]);
 
@@ -24,5 +28,5 @@ export const useNameValidation = () => {
     nameValidation();
   }, [nameValidation, name]);
 
-  return { name, setName, nameError, setNameError };
+  return { name, setName, nameError, setNameError, isValidateName };
 };

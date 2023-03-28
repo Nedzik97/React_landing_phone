@@ -1,7 +1,8 @@
-@import "../templates.module.scss";
+@import "../../styles/variables.scss";
 
 .genderSelectionWrapper {
-	padding: 0 1.6rem;
+	height: 100vh;
+	padding: 0 1.6rem 4.75rem 1.6rem;
 	background-position: top;
 	background-image: url("../../images/bg.jpg");
 	background-size: 100%;
@@ -38,10 +39,6 @@
 
 .buttonWoman svg {
 	margin-right: 2%;
-}
-
-.blockComments {
-	padding-bottom: 76px;
 }
 
 .comment {

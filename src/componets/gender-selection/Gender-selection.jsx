@@ -58,29 +58,27 @@ export const GenderSelection = () => {
           </svg>
         }
       />
-      <div className={styles.blockComments}>
-        <section className={styles.comment}>
-          <img
-            className={styles.photoCommentersLylia}
-            src={photoLylia}
-            alt="Фото коментатора Лили"
-          />
-          <img
-            className={styles.photoCommentersEhor}
-            src={photoEgor}
-            alt="Фото коментатора Егора"
-          />
-          <p className={styles.commentersName}>Аня и Дима</p>
-          <span className={styles.dataComment}>23 недели назад</span>
-          <p className={styles.commentText}>
-            Безопасность и анонимность пользователей — наш главный приоритет. Мы
-            используем новейшие технологии, чтобы защитить вашу личную
-            информацию и данные, указанные при регистрации. Мы используем
-            новейшие технологии, чтобы защитить вашу защитить и личную...
-            <span className={styles.linkReadMore}>Читать полностю</span>
-          </p>
-        </section>
-      </div>
+      <section className={styles.comment}>
+        <img
+          className={styles.photoCommentersLylia}
+          src={photoLylia}
+          alt="Фото коментатора Лили"
+        />
+        <img
+          className={styles.photoCommentersEhor}
+          src={photoEgor}
+          alt="Фото коментатора Егора"
+        />
+        <p className={styles.commentersName}>Аня и Дима</p>
+        <span className={styles.dataComment}>23 недели назад</span>
+        <p className={styles.commentText}>
+          Безопасность и анонимность пользователей — наш главный приоритет. Мы
+          используем новейшие технологии, чтобы защитить вашу личную информацию
+          и данные, указанные при регистрации. Мы используем новейшие
+          технологии, чтобы защитить вашу защитить и личную...
+          <span className={styles.linkReadMore}>Читать полностю</span>
+        </p>
+      </section>
     </div>
   );
 };
