@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/React_landing_phone/static/css/main.a6d2694c.css",
-    "main.js": "/React_landing_phone/static/js/main.7497bbfa.js",
+    "main.css": "/React_landing_phone/static/css/main.d6d3a079.css",
+    "main.js": "/React_landing_phone/static/js/main.e7d4edda.js",
     "static/media/bg.jpg": "/React_landing_phone/static/media/bg.23d10f0bee225233fdb2.jpg",
     "static/media/bg-create-quastionnaire.jpg": "/React_landing_phone/static/media/bg-create-quastionnaire.0abdd822a9030b665345.jpg",
     "static/media/bg-purpose-dating.jpg": "/React_landing_phone/static/media/bg-purpose-dating.da4d1344db7877280d5f.jpg",
@@ -20,11 +20,11 @@
     "static/media/check-mark.svg": "/React_landing_phone/static/media/check-mark.858bdef9167fe0c8b605.svg",
     "static/media/cross.svg": "/React_landing_phone/static/media/cross.fa9ed4d4bf7c4a44f46d.svg",
     "static/media/bg-checkbox.svg": "/React_landing_phone/static/media/bg-checkbox.d3b7e46a165f7330f7ee.svg",
-    "main.a6d2694c.css.map": "/React_landing_phone/static/css/main.a6d2694c.css.map",
-    "main.7497bbfa.js.map": "/React_landing_phone/static/js/main.7497bbfa.js.map"
+    "main.d6d3a079.css.map": "/React_landing_phone/static/css/main.d6d3a079.css.map",
+    "main.e7d4edda.js.map": "/React_landing_phone/static/js/main.e7d4edda.js.map"
   },
   "entrypoints": [
-    "static/css/main.a6d2694c.css",
-    "static/js/main.7497bbfa.js"
+    "static/css/main.d6d3a079.css",
+    "static/js/main.e7d4edda.js"
   ]
 }
