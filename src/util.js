@@ -7,4 +7,7 @@ export const yearsBirth = Array.from(
 export const regExpName = /^[A-Za-z_-]{2,}|[А-Яа-я_-]{2,}$/;
 export const regExpEmail = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i;
 export const regExpPassword =
-  /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z]{8,}/g;
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
+
+export const checkedValidField = (fieldValue) =>
+  fieldValue !== undefined && fieldValue !== "";

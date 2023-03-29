@@ -4,7 +4,7 @@ import { regExpName } from "../util";
 export const useNameValidation = () => {
   const [name, setName] = useState(undefined);
   const [nameError, setNameError] = useState(undefined);
-  const [isValidateName, setIsValidateName] = useState(false);
+  const [isNameValid, setIsValidateName] = useState(false);
 
   const nameValidation = useCallback(() => {
     if (!name) {
@@ -28,5 +28,5 @@ export const useNameValidation = () => {
     nameValidation();
   }, [nameValidation, name]);
 
-  return { name, setName, nameError, setNameError, isValidateName };
+  return { name, setName, nameError, setNameError, isNameValid };
 };

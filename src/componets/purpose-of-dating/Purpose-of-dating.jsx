@@ -1,5 +1,5 @@
 import { SelectionItem } from "../Selection-item";
-import { paths } from "../../constans";
+import { path } from "../../constans";
 import styles from "./Purpose-of-dating.module.scss";
 
 export const PurposeOfDating = () => {
@@ -8,22 +8,22 @@ export const PurposeOfDating = () => {
       <p className={styles.titlePurposeOfDating}>Цель знакомства:</p>
       <SelectionItem
         text={"дружба и общение"}
-        path={paths.registrationForm}
+        path={path.registrationForm}
         className={styles.buttonPurposeOfDating}
       />
       <SelectionItem
         text={"долгосрочные отношения"}
-        path={paths.registrationForm}
+        path={path.registrationForm}
         className={styles.buttonPurposeOfDating}
       />
       <SelectionItem
         text={"создание семьи"}
-        path={paths.registrationForm}
+        path={path.registrationForm}
         className={styles.buttonPurposeOfDating}
       />
       <SelectionItem
         text={"встречи без обязательств"}
-        path={paths.registrationForm}
+        path={path.registrationForm}
         className={styles.buttonPurposeOfDating}
       />
       <p className={styles.promtText}>

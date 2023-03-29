@@ -4,7 +4,7 @@ import { regExpPassword } from "../util";
 export const usePasswordValidation = () => {
   const [password, setPassword] = useState(undefined);
   const [passwordError, setPasswordError] = useState(undefined);
-  const [isValidatePassword, setIsValidatePassword] = useState(false);
+  const [isPasswordValid, setIsValidatePassword] = useState(false);
 
   const passwordValidation = useCallback(() => {
     if (!password) {
@@ -32,6 +32,6 @@ export const usePasswordValidation = () => {
     password,
     setPassword,
     passwordError,
-    isValidatePassword,
+    isPasswordValid,
   };
 };

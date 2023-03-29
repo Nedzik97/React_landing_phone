@@ -1,7 +1,7 @@
 import photoLylia from "../../images/lylia-photo.png";
 import photoEgor from "../../images/egor-photo.png";
 import { SelectionItem } from "../Selection-item";
-import { paths } from "../../constans";
+import { path } from "../../constans";
 import styles from "./Gender-selection.module.scss";
 
 export const GenderSelection = () => {
@@ -10,7 +10,7 @@ export const GenderSelection = () => {
       <p className={styles.genderText}>Наибольшая база анкет для знакомств</p>
       <SelectionItem
         text={"Я мужчина"}
-        path={paths.purposeOfDating}
+        path={path.purposeOfDating}
         className={`${styles.buttonGender} ${styles.buttonMan}`}
         name={"man"}
         value={"man"}
@@ -35,7 +35,7 @@ export const GenderSelection = () => {
       />
       <SelectionItem
         text={"Я женщина"}
-        path={paths.purposeOfDating}
+        path={path.purposeOfDating}
         className={`${styles.buttonGender} ${styles.buttonWoman}`}
         name={"woman"}
         value={"woman"}

@@ -4,7 +4,7 @@ import { regExpEmail } from "../util";
 export const useEmailValidation = () => {
   const [email, setEmail] = useState(undefined);
   const [emailError, setEmailError] = useState(undefined);
-  const [isValidateEmail, setIsValidateEmail] = useState(false);
+  const [isEmailValid, setIsValidateEmail] = useState(false);
 
   const emailValidation = useCallback(() => {
     if (!email) {
@@ -28,5 +28,5 @@ export const useEmailValidation = () => {
     emailValidation();
   }, [emailValidation, email]);
 
-  return { email, setEmail, emailError, isValidateEmail };
+  return { email, setEmail, emailError, isEmailValid };
 };

@@ -5,7 +5,7 @@ export const useDateValidation = () => {
   const [days, setDays] = useState("");
   const [month, setMonth] = useState("");
   const [years, setYears] = useState("");
-  const [isValidateDate, setIsValidateDate] = useState(false);
+  const [isDateValid, setIsValidateDate] = useState(false);
 
   const dateValidation = useCallback(() => {
     const receivedDate = new Date(`/${month}/${days}/${years}`);
@@ -38,6 +38,6 @@ export const useDateValidation = () => {
     years,
     setYears,
     dateValidation,
-    isValidateDate,
+    isDateValid,
   };
 };
