@@ -4,6 +4,8 @@ body {
 	padding: 0;
 	font-family: "Roboto", sans-serif;
 	box-sizing: border-box;
+	background: rgba(96, 96, 96, 0.4);
+	backdrop-filter: blur(5px);
 }
 
 .app {
@@ -24,34 +26,9 @@ input[type='radio'] {
 	padding: 0;
 }
 
-
-.page-enter-active {
-	animation: fade-in 1s forwards;
-}
-
-.page-exit-active {
-	animation: fade-out 1s forwards;
-	opacity: 1;
-}
-
-@keyframes fade-in {
-	0% {
-		opacity: 0;
-		transform: translateX(-400px);
-	}
-	100% {
-		transform: translateX(0);
-	}
-}
-
-@keyframes fade-out {
-	0% {
-		opacity: 0;
-		transform: translateX(400px);
-	}
-	100% {
-		transform: translateX(0);
-	}
+.pageEnter {
+	transform: translateY(-100%);
+	transition: transform 300ms;
 }
 
 @font-face {
@@ -116,6 +93,16 @@ input[type='radio'] {
 	font-style: normal;
 	font-weight: 700;
 	font-display: swap;
+}
+
+@media (min-width: 320px) {
+	html,
+	body {
+		font-size: 12px;
+	}
+	.genderText {
+		padding-top: 8rem;
+	}
 }
 
 @media (min-width: 375px) {
