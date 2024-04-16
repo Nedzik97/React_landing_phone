@@ -7,11 +7,11 @@ import { routes } from "./componets/app/App";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/React_landing_phone/",
     element: <App />,
     children: routes.map((route) => ({
-      index: route.path === "/",
-      path: route.path === "/" ? undefined : route.path,
+      index: route.path === "//React_landing_phone/",
+      path: route.path === "//React_landing_phone/" ? undefined : route.path,
       element: route.element,
     })),
   },

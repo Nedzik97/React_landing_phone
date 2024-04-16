@@ -10,7 +10,7 @@ import styles from "./App.module.scss";
 
 export const routes = [
   {
-    path: "/",
+    path: "/React_landing_phone/",
     element: <GenderSelection />,
     nodeRed: createRef(),
   },
