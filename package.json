@@ -2,7 +2,7 @@
   "name": "react_landing_phone",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nedzik97.github.io/React_landing_phone/",
+  "homepage": "https://nedzik97.github.io/landing_meeting_website/",
   "dependencies": {
     "@react-spring/web": "^9.7.1",
     "@testing-library/jest-dom": "^5.16.5",
