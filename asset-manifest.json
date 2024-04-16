@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/landing_meeting_website/static/css/main.67860bd3.css",
-    "main.js": "/landing_meeting_website/static/js/main.59eaa797.js",
+    "main.js": "/landing_meeting_website/static/js/main.91065aba.js",
     "static/media/bg.jpg": "/landing_meeting_website/static/media/bg.23d10f0bee225233fdb2.jpg",
     "static/media/bg-create-quastionnaire.jpg": "/landing_meeting_website/static/media/bg-create-quastionnaire.0abdd822a9030b665345.jpg",
     "static/media/bg-purpose-dating.jpg": "/landing_meeting_website/static/media/bg-purpose-dating.da4d1344db7877280d5f.jpg",
@@ -21,10 +21,10 @@
     "static/media/cross.svg": "/landing_meeting_website/static/media/cross.fa9ed4d4bf7c4a44f46d.svg",
     "static/media/bg-checkbox.svg": "/landing_meeting_website/static/media/bg-checkbox.d3b7e46a165f7330f7ee.svg",
     "main.67860bd3.css.map": "/landing_meeting_website/static/css/main.67860bd3.css.map",
-    "main.59eaa797.js.map": "/landing_meeting_website/static/js/main.59eaa797.js.map"
+    "main.91065aba.js.map": "/landing_meeting_website/static/js/main.91065aba.js.map"
   },
   "entrypoints": [
     "static/css/main.67860bd3.css",
-    "static/js/main.59eaa797.js"
+    "static/js/main.91065aba.js"
   ]
 }
