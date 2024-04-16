@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/React_landing_phone/static/css/main.ceafca2a.css",
+    "main.css": "/React_landing_phone/static/css/main.f3b95463.css",
     "main.js": "/React_landing_phone/static/js/main.deddf615.js",
     "static/media/bg.jpg": "/React_landing_phone/static/media/bg.23d10f0bee225233fdb2.jpg",
     "static/media/bg-create-quastionnaire.jpg": "/React_landing_phone/static/media/bg-create-quastionnaire.0abdd822a9030b665345.jpg",
@@ -20,11 +20,11 @@
     "static/media/check-mark.svg": "/React_landing_phone/static/media/check-mark.858bdef9167fe0c8b605.svg",
     "static/media/cross.svg": "/React_landing_phone/static/media/cross.fa9ed4d4bf7c4a44f46d.svg",
     "static/media/bg-checkbox.svg": "/React_landing_phone/static/media/bg-checkbox.d3b7e46a165f7330f7ee.svg",
-    "main.ceafca2a.css.map": "/React_landing_phone/static/css/main.ceafca2a.css.map",
+    "main.f3b95463.css.map": "/React_landing_phone/static/css/main.f3b95463.css.map",
     "main.deddf615.js.map": "/React_landing_phone/static/js/main.deddf615.js.map"
   },
   "entrypoints": [
-    "static/css/main.ceafca2a.css",
+    "static/css/main.f3b95463.css",
     "static/js/main.deddf615.js"
   ]
 }
