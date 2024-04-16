@@ -1,4 +1,4 @@
 export const path = {
-  purposeOfDating: "/React_landing_phone/purpose-of-dating",
-  registrationForm: "/React_landing_phone/registration-form",
+  purposeOfDating: "/landing_meeting_website/purpose-of-dating",
+  registrationForm: "/landing_meeting_website/registration-form",
 };
